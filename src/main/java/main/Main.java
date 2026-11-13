@@ -33,7 +33,12 @@ public class Main {
         }
 
         // get all data and print all data
+        Vector<Asset> allAssets =
+                dao.viewAllAssets();
 
+        for (Asset eachAsset: allAssets) {
+            eachAsset.viewGenericAssets();
+        }
     }
 
 }

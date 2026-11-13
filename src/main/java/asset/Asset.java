@@ -55,5 +55,9 @@ public class Asset {
 		this.age = age;
 	}
 	
-	
+	public void viewGenericAssets() {
+		System.out.println(
+				"Asset: " + name + ", Role: " + role
+		);
+	}
 }
