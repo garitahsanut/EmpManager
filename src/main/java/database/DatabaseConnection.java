@@ -6,11 +6,11 @@ public class DatabaseConnection {
     public static Connection getConnection()
     throws SQLException {
             // base url
-            String url = "jdbc:mysql://localhost:3306/empmanager";
+            String url = "jdbc:mysql://localhost:3306/DB_NAME";
 
             // creds
-            String username = "root";
-            String password = "";
+            String username = "DB_USERNAME";
+            String password = "DB_PASSWORD";
 
             // initialize connection
             return DriverManager.getConnection(
