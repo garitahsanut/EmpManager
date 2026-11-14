@@ -66,4 +66,44 @@ public class AssetDAO {
 
         return viewAsset;
     }
+
+    // update
+    public boolean updateAsset (Asset unapdatedAsset) {
+        String sqlUpdateQuery =
+                "UPDATE asset SET role=?, name=?, sex=?, age=? WHERE id=?";
+
+        try (
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement stmnt = conn.prepareStatement(sqlUpdateQuery);
+                ) {
+                stmnt.setString(1, unapdatedAsset.getRole());
+                stmnt.setString(2, unapdatedAsset.getName());
+                stmnt.setString(3, unapdatedAsset.getSex());
+                stmnt.setInt(4, unapdatedAsset.getAge());
+                stmnt.setInt(5, unapdatedAsset.getId());
+
+                int rows = stmnt.executeUpdate();
+                return rows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // delete
+    public void purgeAsset(int id) {
+        String sqlDeleteQuery =
+                "DELETE FROM asset WHERE id=?";
+
+        try (
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement stmnt = conn.prepareStatement(sqlDeleteQuery);
+                ) {
+                stmnt.setInt(1, id);
+
+                stmnt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
