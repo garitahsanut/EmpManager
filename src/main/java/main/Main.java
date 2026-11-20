@@ -2,8 +2,10 @@ package main;
 
 import asset.Asset;
 import dao.AssetDAO;
+import dao.TimeLineDAO;
 import timeline.TimeLine;
 
+import java.sql.Time;
 import java.util.Vector;
 
 public class Main {
@@ -55,6 +57,17 @@ public class Main {
 
         for (Asset eachAsset: allAssets) {
             eachAsset.viewGenericAssets();
+        }
+
+        Vector<TimeLine> timelines = new Vector<TimeLine>();
+        timelines.add(
+                new TimeLine(1, "executor", "nashgull", "male", 32).showTimeLine(1, 4,8)
+        );
+
+        TimeLineDAO timeLineDAO = new TimeLineDAO();
+
+        for (TimeLine eachTimeLine : timelines) {
+            timeLineDAO.createTimeLine(eachTimeLine);
         }
 
         // delete
